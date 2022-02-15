@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Hotel Booking
+{% endblock title %}
+
+{% block body %}
+
+{% if request.session.customer %}
+
+<div class="container .add-container-margin">
+    <div class="hotel-booking-frm p-5">
+        <h3 class="p-3 text-center">Book Your Hotel</h3>
+
+        <form action="" method="POST" class="w-75 mx-auto">
+            {% csrf_token %}
+
+            {% if success_message %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <b>{{success_message}}</b>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endif %}
+
+            <div class="form-row p-2">
+                <div class="col">
+                    <label for="first_name"><b>Frist Name</b></label>
+                    <input type="text" name="first_name" value="{{request.session.customer_first_name}}" class="form-control" placeholder="Enter First Name"
+                        required>
+                </div>
+                <div class="col">
+                    <label for="last_name "><b>Last Name</b></label>
+                    <input type="text" name="last_name" value="{{request.session.customer_last_name}}" class="form-control" placeholder="Enter Last Name"
+                        required>
+                </div>
+            </div>
+
+            <div class="form-row p-2">
+                <div class="col">
+                    <label for="email"><b>Email</b></label>
+                    <input type="email" name="email" value="" class="form-control" placeholder="Enter Email" required>
+                </div>
+                <div class="col">
+                    <label for="phoneNumber"><b>Phone Number</b></label>
+                    <input type="text" name="phoneNumber" value="" class="form-control" placeholder="Enter Phone Number"
+                        required>
+                </div>
+            </div>
+
+            <div class="form-row p-2">
+                <div class="col">
+                    <label for="hotel_name"><b>Hotel name</b></label>
+                    <input type="text" name="hotel_name" value="{{hotel_view_obj.hotel_name}}" class="form-control"
+                        required>
+                </div>
+                <div class="col">
+                    <!-- <label for="hotel_location"><b>Hotel Location</b></label>
+                    <input type="text" name="hotel_location" value="{{hotel_view_obj.hotel_location}}"
+                        class="form-control" required> -->
+
+                </div>
+            </div>
+
+            <div class="form-row p-2">
+                <div class="col">
+
+                    <label for="number_of_adults"><b>Number of Adults</b></label>
+                    <input type="number" name="number_of_adults" value="" class="form-control"
+                        placeholder="Number of Adults" required>
+
+                </div>
+                <div class="col">
+
+                    <label for="number_of_childen"><b>Number of Childen</b></label>
+                    <input type="number" name="number_of_childen" value="" class="form-control"
+                        placeholder="Number of Childen">
+
+                </div>
+                <div class="col">
+
+                    <label for="number_of_room"><b>Number of Room</b></label>
+                    <input type="number" name="number_of_room" value="" class="form-control"
+                        placeholder="Number of Room">
+
+                </div>
+            </div>
+
+            <div class="form-row p-2">
+                <div class="col">
+
+                    <label for="cheek_in_date"><b>Cheek in Date</b></label>
+                    <input type="Date" name="cheek_in_date" value="" class="form-control" placeholder="Cheek in Date"
+                        required>
+
+                </div>
+                <div class="col">
+                    <label for="cheek_in_out"><b>Cheek in Out</b></label>
+                    <input type="Date" name="cheek_in_out" value="" class="form-control" placeholder="Cheek in Out"
+                        required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+{% else %}
+
+<h2 class="p-5 text-center mt-5"><a href="login">login here</a></h2>
+
+{% endif %}
+
+
+{%endblock body%}

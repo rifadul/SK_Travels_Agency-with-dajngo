@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Booking Page
+{% endblock title %}
+
+{% block body %}
+
+{% if request.session.customer %}
+
+<div class="container .add-container-margin">
+    <div class="tour-booking-from p-5">
+        <h3 class="p-3 text-center">Book Your Tour Package </h3>
+
+        <form action="" method="POST" class="w-75 mx-auto">
+            {% csrf_token %}
+
+            {% if success_message %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <b>{{success_message}}</b>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endif %}
+
+            <div class="form-row p-2">
+                <div class="col">
+                    <label for="first_name"><b>Frist Name</b></label>
+                    <input type="text" name="first_name" value="{{request.session.customer_first_name}}"
+                        class="form-control" placeholder="Enter First Name" required>
+                </div>
+                <div class="col">
+                    <label for="last_name"><b>Last Name</b></label>
+                    <input type="text" name="last_name" value="{{request.session.customer_last_name}}"
+                        class="form-control" placeholder="Enter Last Name" required>
+                </div>
+            </div>
+            <div class="form-row p-2">
+                <div class="col">
+                    <label for="email"><b>Email</b></label>
+                    <input type="email" name="email" value="{{request.session.customer_email}}" class="form-control"
+                        placeholder="Enter Email" required>
+                </div>
+                <div class="col">
+                    <label for="phoneNumber"><b>Phone Number</b></label>
+                    <input type="text" name="phoneNumber" value="{{request.session.customer_phone}}"
+                        class="form-control" placeholder="Enter Phone Number" required>
+                </div>
+            </div>
+
+            <div class="form-row p-2">
+                <div class="col">
+                    <label for="tourist_place"><b>Tourist Place</b></label>
+                    <input type="text" name="tourist_place" value="{{obj.tourist_place_name}}" class="form-control"
+                        required>
+                </div>
+                <div class="col">
+                    <label for="pakage_price"><b>Package Price (Per Person)</b></label>
+                    <input type="text" name="pakage_price" value="{{obj.tour_price}}" class="form-control" required>
+
+                </div>
+            </div>
+
+            <div class="form-row p-2">
+                <div class="col">
+
+                    <label for="number_of_adults"><b>Number of Adults</b></label>
+                    <input type="number" name="number_of_adults" value="" class="form-control"
+                        placeholder="Number of Adults" required>
+
+                </div>
+                <div class="col">
+
+                    <label for="number_of_childen"><b>Number of Childen</b></label>
+                    <input type="number" name="number_of_childen" value="" class="form-control"
+                        placeholder="Number of Childen">
+
+                </div>
+            </div>
+
+            <div class="form-row p-2">
+                <div class="col">
+
+                    <label for="payment_method"><b>Payment Method</b></label>
+                    <select class="custom-select" name="payment_method">
+                        <option selected>Select Paymet Method</option>
+                        <option>Bkash</option>
+                        <option>Rocket </option>
+                        <option>Nagad</option>
+                    </select>
+
+                </div>
+                <div class="col">
+
+                    <label for="payment_mobile_number"><b>Payment Mobile Number</b></label>
+                    <input type="text" name="payment_mobile_number" value="" class="form-control"
+                        placeholder="Enter Payment Mobile Number">
+
+                </div>
+            </div>
+
+            <div class="form-row p-2">
+                <div class="col">
+
+                    <label for="payment_transaction_number"><b>Payment Transaction Number</b></label>
+                    <input type="text" name="payment_transaction_number" value="" class="form-control"
+                        placeholder="Enter Payment Transaction number" required>
+
+                </div>
+                <div class="col">
+
+                    <label for="payment_amount"><b>Payment Amount <span style="color: red;">(Total Travel Person
+                                X Pakage Price)</span></b></label>
+                    <input type="number" name="payment_amount" value="" class="form-control"
+                        placeholder="Payment Amount">
+
+                </div>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+{% else %}
+
+<h2 class="p-5 text-center mt-5"><a href="login">login here</a></h2>
+
+{% endif %}
+
+{%endblock body%}

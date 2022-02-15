@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Hotel
+{% endblock title %}
+
+{% block body %}
+
+
+
+<div class="container .add-container-margin">
+    <div class="signUp-from p-5">
+        <h3 class="p-3 text-center">Create Your Account </h3>
+
+
+
+
+        <form action="" method="POST" class="w-50 mx-auto">
+            {% csrf_token %}
+
+            {% if error_message %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{error_message}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endif %}
+            {% if success_message %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{success_message}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endif %}
+
+
+            <div class="form-group">
+                <label for="fname"><b>Frist Name</b></label>
+                <input type="text" name="fname" value="{{values.first_name}}" class="form-control form-control-sm"
+                    placeholder="Enter First Name" required>
+            </div>
+            <div class="form-group">
+                <label for="lname"><b>Last Name</b></label>
+                <input type="text" name="lname" value="{{values.last_name}}" class="form-control form-control-sm"
+                    placeholder="Enter Last Name" required>
+            </div>
+            <div class="form-group">
+                <label for="email"><b>Email</b></label>
+                <input type="email" name="email" value="{{values.email}}" class="form-control form-control-sm"
+                    placeholder="Enter Email" required>
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber"><b>Phone Number</b></label>
+                <input type="text" name="phoneNumber" value="{{values.phone_number}}"
+                    class="form-control form-control-sm" placeholder="Enter Phone Number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" name="username" class="form-control form-control-sm" placeholder=" Enter Username"
+                    autocomplete="on" required>
+
+            </div>
+            <div class="form-group">
+                <label for="psw"><b>Password</b></label>
+                <input type="password" name="password" class="form-control form-control-sm" placeholder="Enter Password"
+                    autocomplete="on" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Create Account</button>
+        </form>
+    </div>
+    <div class="switch-mode text-center pb-3">Already have an account? <strong><a href="login">Login</a></strong>
+    </div>
+</div>
+
+
+
+
+<!-- <div id="id02" class="modal">
+
+    <form class="modal-content animate" action="" method="post">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal"><i
+                    class="fas fa-times"></i></span>
+        </div>
+
+        <div class="container">
+            <label for="fname"><b>Frist Name</b></label>
+            <input type="text" placeholder="Enter First Name" name="fname" required>
+
+            <label for="lname"><b>Last Name</b></label>
+            <input type="text" placeholder="Enter Last Name" name="lname" required>
+
+            <label for="email"><b>Email</b></label>
+            <input type="email" placeholder="Enter Email" name="email" required>
+
+            <label for="phoneNumber"><b>Phone Number</b></label>
+            <input type="text" placeholder="Enter Phone Number" name="lname" required>
+
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" autocomplete="on" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" autocomplete="on" required>
+
+            <button type="submit">Sign Up</button>
+        </div>
+
+    </form>
+</div> -->
+
+{%endblock body%}

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Hotel
+{% endblock title %}
+
+{% block body %}
+<!--hotel section start-->
+
+
+<section id="hotel">
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4 text-center">Hotel</h1>
+        </div>
+    </div>
+
+    <div class="container add-container-margin">
+
+        <div class="row">
+            <!-- <div class="col-lg-3 mx-auto">
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action">All</a>
+
+                    {% for locations_obj in locations_obj %}
+
+                    <a href="#"
+                        class="list-group-item list-group-item-action">{{locations_obj.tourist_place_locations}}</a>
+
+                    {% endfor %}
+
+                </div>
+            </div> -->
+
+            <div class="col-lg-12 col-md-12 mx-auto">
+                <div class="row">
+
+
+                    <!-- items -->
+                    {% for hotel in hotel_obj %}
+                    <div class="col-xl-4 col-md-6 col-sm-12 pb-4 mx-auto">
+                        <div class="card">
+                            <img class="card-img-top" src="{{hotel.hotel_image.url}}" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">{{hotel.hotel_name}}</h5>
+                                <p class="card-text">{{hotel.hotel_location}}</p>
+                                <p class="card-text">{{hotel.hotel_sort_description}}</p>
+                                <h5 class="card-text">{{hotel.hotel_room_price}} Taka</h5>
+                            </div>
+                            <div class="card-footer">
+                                <a href="{% url 'hotel_details' hotel.id %}" class="btn btn-primary float-right">See
+                                    More</a>
+                                <!-- new  -->
+                                <a href="{% url 'hotel_booking' hotel.id %}" class="btn btn-primary float-left">Book
+                                    Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <!-- item end -->
+            </div>
+
+
+        </div>
+
+    </div>
+    <div class="section-bottom-border"></div>
+</section>
+
+
+<!--Hotel section end-->
+{% endblock body %}

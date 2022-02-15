@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+Destination
+{% endblock title %}
+
+{% block body %}
+
+
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4 text-center">Tour Place</h1>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <!-- items -->
+        <!--        loop-->
+        {% for x in destinations_obj %}
+        <div class="col-xl-4 col-md-6 col-sm-12 pb-4 mx-auto">
+            <div class="card">
+                <img class="card-img-top" src="{{x.tour_image.url}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{x.tourist_place_name}}</h5>
+                    <p class="card-text">{{x.tour_sort_description}}</p>
+                    <h5 class="card-text">{{x.tour_price}} Taka</h5>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'details' x.id %}" class="btn btn-primary float-right">See More</a>
+                    <a href="{% url 'tour_booking' x.id %}" class="btn btn-primary float-left">Book Now</a>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <!-- item end -->
+    </div>
+</div>
+
+{% endblock body %}
+
+
+
+<!-- <h1>{{location.location_name}}</h1> -->
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

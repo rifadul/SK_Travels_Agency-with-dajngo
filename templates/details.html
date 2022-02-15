@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<div class="jumbotron text-center">
+  <h1 class="display-4">Details Page!</h1>
+</div>
+
+
+
+<div class="details_page_contain p-5">
+
+  <div class="container-fluid w-90 mx-auto">
+    <div class="row">
+      <div class="col-md-4 col-sm-12">
+        <img src="{{obj.tour_image.url}}" class="img-fluid" alt="Responsive image">
+      </div>
+      <div class="col-md-8 col-sm-12">
+        <table class="table">
+          <tbody>
+            <tr>
+              <td class="w-25">
+                <h5>Place Name</h5>
+              </td>
+              <td class="w-75">{{obj.tourist_place_name}}</td>
+            </tr>
+            <!-- <tr>
+              <td class="w-25"><h5>tour_sort_description</h5> </td>
+              <td class="w-75">{{obj.tour_sort_description}}</td>
+            </tr> -->
+            <tr>
+              <td class="w-25">
+                <h5>Description</h5>
+              </td>
+              <td class="w-75">{{obj.tour_description}}</td>
+            </tr>
+            <tr>
+              <td class="w-25">
+                <h5>Facility</h5>
+              </td>
+              <td class="w-75">{{obj.tour_facility}}</td>
+            </tr>
+            <tr>
+              <td class="w-25">
+                <h5>Price</h5>
+              </td>
+              <td class="w-75">{{obj.tour_price}}</td>
+            </tr>
+            <tr>
+              <td class="w-25">
+                <h5>Package </h5>
+              </td>
+              <td class="w-75">{{obj.tour_pakage}}</td>
+            </tr>
+            <tr>
+              <td class="w-25">
+                <h5>Traveling Date</h5>
+              </td>
+              <td class="w-75">{{obj.tour_date}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+{% endblock body %}
